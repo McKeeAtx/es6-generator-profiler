@@ -22,7 +22,7 @@ Certain lifecycle events can be captured using a custom [Redux Middleware](https
 
 ## Details
 
-Let's start with an example:
+Let's start our in-depth discussion of `profile` with an example:
 ```
 function* saga1(action) {
     yield call(slowFunction);

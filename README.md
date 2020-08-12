@@ -10,11 +10,19 @@ Let's get started by revisiting the idea behind Sagas:
 > The mental model is that a saga is like a separate thread in your application that's solely responsible for side effects.
 > - https://redux-saga.js.org
 
-Unfortunately, the above analogy does not apply at runtime: Sagas are chopped into bits and pieces that appear as unrelated Microtasks scattered throughout the timeline. This is in stark contract to languages where Threads are *first class citizens*. For example, the following screenshot shows how threads appear as continuous bars within [VisualVM](https://visualvm.github.io):
+Unfortunately, the above analogy does not apply at runtime: Sagas are chopped into bits and pieces that appear as unrelated Microtasks scattered throughout the timeline:
+ 
+![timeline without profiling](images/introduction-profiling-disabled.png?raw=true)
+
+You see the individual bits and pieces, but it's not obvious how that relates to your Sagas.
+This is in stark contract to languages where Threads are *first class citizens*. For example, the following screenshot shows how threads appear as continuous bars within [VisualVM](https://visualvm.github.io) when profiing a JVM based application:
 
 ![VisualVM](images/visualvm.png?raw=true)
 
-The purpose of `profile` is to unify the mental model of a Saga with the way it is displayed in the timeline of a profiler: In both cases, it should appear as continuous thread of execution.
+In the above picture, you see exactly which thread is running when.
+The purpose of `profile` is to unify the mental model of a Saga with the way it is displayed in the timeline of a profiler: In both cases, it should appear as continuous thread of execution:
+
+![timeline without profiling](images/introduction-profiling-enabled.png?raw=true)
 
 ## Alternatives
 

@@ -43,7 +43,7 @@ Let's analyze what happens at runtime using Chrome's Performance profiler:
 
 The call stacks in the Main section are mostly made up of *synthetic noise*. They provide little to no value if you want to understand which part of your application invoked `slowFunction`. You can infer from the synthetic stack frames that `slowFunction` is invoked from a Redux middleware, but that's about it. Sagas are invisible and it's not obvious that the three call stacks are siblings that share the same logical parent.
 
-This is where `profile` comes into the game:
+This is where `profile` comes into play:
 ```
 function* rootSaga() {
     yield takeLatest(PATTERN1, profile(saga1, performance));

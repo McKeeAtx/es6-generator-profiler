@@ -1,0 +1,26 @@
+{
+  "type": "module",
+  "name": "generator-profiler",
+  "version": "1.0.0",
+  "description": "Simple profiler for generator functions",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/McKeeAtx/generator-profiler.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/McKeeAtx/generator-profiler/issues"
+  },
+  "homepage": "https://github.com/McKeeAtx/generator-profiler#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "babel-jest": "^26.2.2",
+    "jest": "^26.2.2"
+  }
+}

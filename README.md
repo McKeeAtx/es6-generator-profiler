@@ -18,7 +18,7 @@ The purpose of `profile` is to provide the same level of visibility for Sagas wi
 
 ## Alternatives
 
-Certain lifecycle events can be captured using a custom [Redux Middleware](https://redux.js.org/advanced/middleware) or [SagaMonitor](https://redux-saga.js.org/docs/api/#sagamonitor). However, I was not able to utilize those tools to mimick how threads are displayed in JVM based profiling tools. Those extension points are nevertheless valuable to generate further insights. See [clarkbw's gist](https://gist.github.com/clarkbw/966732806e7a38f5b49fd770c62a6099) for a great example how to use a custom Redux Middleware to surface actions within the profiling timeline.
+Certain lifecycle events can be captured using a custom [Redux Middleware](https://redux.js.org/advanced/middleware) or [SagaMonitor](https://redux-saga.js.org/docs/api/#sagamonitor). However, I was not able to utilize those tools to mimick how threads are displayed in JVM based profiling tools. Those extension points are nevertheless valuable to generate further insights. See [clarkbw's gist](https://gist.github.com/clarkbw/966732806e7a38f5b49fd770c62a6099) for a great example how to use a custom Redux Middleware to surface Redux actions within the profiling timeline.
 
 ## Details
 

@@ -1,6 +1,6 @@
 # es6-generator-profiler
 
-Simple wrapper for generator functions that uses the [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) to profile the execution of [ES6 generator functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*).
+Simple wrapper that uses the [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) to profile the execution of [ES6 generator functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*).
 
 ## What problem does it solve?
 

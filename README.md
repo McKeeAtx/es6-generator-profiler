@@ -14,7 +14,7 @@ Unfortunately, the above analogy does not apply at runtime: Sagas are chopped in
 
 ![VisualVM](images/visualvm.png?raw=true)
 
-The purpose of `profile` is to provide the same level of visibility for Sagas within the timeline of a performance profiler.
+The purpose of `profile` is to unify the mental model of a Saga with the way it is displayed in the timeline of a profiler: In both cases, it should appear as continuous thread of execution.
 
 ## Alternatives
 

@@ -1,4 +1,4 @@
-# es6-generator-profiler
+# ES6-Generator-Profiler
 
 Simple wrapper that uses the [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) to profile the execution of [ES6 generator functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*).
 
@@ -6,7 +6,7 @@ Simple wrapper that uses the [User Timing API](https://developer.mozilla.org/en-
 
 I wrote `profile` to help me analyze [React](https://reactjs.org) apps that use [Redux](https://redux.js.org) and [Redux Saga](https://redux-saga.js.org). However, `profile` is strictly framework agnostic. It can be used to profile arbitrary generator functions.
 
-Let's take a step back and revisit the mental model of a Saga:
+Let's revisit the idea behind Saga:
 > The mental model is that a saga is like a separate thread in your application that's solely responsible for side effects.
 > - https://redux-saga.js.org
 
@@ -15,6 +15,12 @@ Unfortunately, the above analogy does not apply at runtime: Sagas are chopped in
 ![VisualVM](images/visualvm.png?raw=true)
 
 The purpose of `profile` is to provide the same level of visibility for Sagas within the timeline of a performance profiler.
+
+## Alternatives
+
+Certain lifecycle events can be captured using a custom [Redux Middleware](https://redux.js.org/advanced/middleware) or [SagaMonitor](https://redux-saga.js.org/docs/api/#sagamonitor). However, I was not able to utilize to mimick in the timeline how threads are surface in JVM based profiling tools. Those tools are nevertheless valuable to generate [further insights](https://gist.github.com/clarkbw/966732806e7a38f5b49fd770c62a6099).
+
+## Details
 
 Let's start with an example:
 ```

@@ -125,5 +125,5 @@ The `call(slowFunction)` effect instructs the Saga middleware to invoke `slowFun
 
 ![saga1(#1).next(#1)](images/ex01-profiling-enabled-saga1-next12.png?raw=true)
 
-The time between `yield` in line 3 returning control back to the caller to `yield` in line 3 returning control back to the caller spans roughly 300 milliseconds. This is the time it takes the middleware to wait for `new Promise(resolve => setTimeout(resolve, 300));` to resolve.
+The time between `yield` in line 3 returning control back to the caller to `yield` in line 4 returning control back to the caller spans roughly 300 milliseconds. This is the time it takes the middleware to wait for `new Promise(resolve => setTimeout(resolve, 300));` in line 3 of `saga1` to resolve.
 

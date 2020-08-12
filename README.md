@@ -119,4 +119,11 @@ Let's take a look at an example:
 
 ![saga1(#1).next(#1)](images/ex01-profiling-enabled-saga1-next1.png?raw=true)
 
-The `call(slowFunction)` effect instructs the Saga middleware to invoke `slowFunction`. The middleware will resume `saga1` after completion of `slowFunction`. As a result, `next(#1)` will measure the time it takes for the middleware to invoke `slowFunction` and resume `saga1` and the time for the creation of the Promise in line 3. It is now easy to connect the dots between line 2 in `saga1` and the call stack you can see in the Main section below `saga1(#1).next(#1)`. While it's not conclusive evidence that the call stack is related to line 2 and 3 of `saga1`, it a good starting point for a more in-depth investigation.
+The `call(slowFunction)` effect instructs the Saga middleware to invoke `slowFunction`. The middleware will call `slowFunction` and resume `saga1` with the result. Since `next(#1)` measures the time from `yield` returning control back to the caller in line 2 and `yield` returning control back to the caller in line 3, the timing will covers both the call to `slowFunction` as well as the creation of the Promise in line 3. It is now easy to connect the dots between `yield call(slowFunction)` line 2 of `saga1` and the call stack you can see in the Main section below `saga1(#1).next(#1)`. While it's not conclusive evidence that the call stack is related to line 2 and 3 of `saga1`, it is a great starting point for your analysis.
+
+`next(#2)` measures the time from `yield` in line 3 returning control back to the caller to `yield` in line 4 returning control back to the caller:
+
+![saga1(#1).next(#1)](images/ex01-profiling-enabled-saga1-next12.png?raw=true)
+
+The time between `yield` in line 3 returning control back to the caller to `yield` in line 3 returning control back to the caller spans roughly 300 milliseconds. This is the time it takes the middleware to wait for `new Promise(resolve => setTimeout(resolve, 300));` to resolve.
+

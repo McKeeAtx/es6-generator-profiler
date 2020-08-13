@@ -71,13 +71,13 @@ The bar `saga1(#1)` indicates that `saga1` is running during this time. `#1` ind
 
 A generator function is considered *running* from the first time `next()` is invoked to the time `next()` returns for the first time with `done: true`. Due to limitations of the implementation of `profile`, the bar for a generator will only be visible if a pervious call of `next()` returned with `done: true`. Otherwise, the Timing section will only show invocations of `next(#n)` (see discussion below).
 
-The next image shows that the execution of `saga(#1)` is further subdivided into multiple `saga(#1).next(...)` bars:
+The next image shows that the execution of `saga(#1)` is broken down into smaller `saga(#1).next(#b)` bars:
 
 ![saga1(#1).next(#1)](images/ex01-profiling-enabled-saga1-next1.png?raw=true)
 
 The meaning of `next(#n)`:
 - n=0: duration of the first invocation of `next()`
-- n>0: duration between the return of the *n-1st* call of `next()` and the return of *n-th* call of `next()`
+- n>0: duration from the return of the *n-1st* call of `next()` to the return of *n-th* call of `next()`
 
 Let's take a look at an example:
 ```
@@ -90,28 +90,30 @@ Let's take a look at an example:
 7 }
 ```
 
-According to the rules introduced above, `next(#0)` measures the duration of the first invocation of `next()`. The only thing that happens during this time is the creation of the `call(slowFunction)` effect (which does not take a lot of time). That is the reason why we have to zoom into the timeline to see the `saga1(#1).next(#0)` bar:
+According to the rules introduced above, `next(#0)` measures the duration of the first invocation of `next()`. The only thing that happens during this time is the creation of the `call(slowFunction)` effect. Since the creation of the effect does not take a lot of time, we have to zoom into the timeline to see the `saga1(#1).next(#0)` bar:
 
 ![saga1(#1).next(#0)](images/ex01-profiling-enabled-saga1-next0.png?raw=true)
 
-`next(#1)` measures the duration between the return of the first call of `next()` and the return of the second call of `next()`:
+`next(#1)` measures the duration from the return of the first call of `next()` to the return of the second call of `next()`:
 
 ![saga1(#1).next(#1)](images/ex01-profiling-enabled-saga1-next1.png?raw=true)
 
 Let's think about what happens during this time:
 - the Redux middleware receives the `call(slowFunction)` effect
 - the Redux middleware invokes `slowFunction` and resumes `saga1`
-- `saga1` creates a new Promise (`new Promise(resolve => setTimeout(resolve, 300))`) and returns it to the middleware
+- `saga1` creates `new Promise(resolve => setTimeout(resolve, 300))` and returns it to the middleware
 
 This suggests that the call stack below `saga1(#1).next(#1)` is related to the execution of `slowFunction`. While it's not conclusive evidence, it is a great starting point for your analysis.
 
-`next(#2)` measures the duration between the return of the second call of `next()` and the return of the third call of `next()`:
+`next(#2)` measures the duration from the return of the second call of `next()` to the return of the third call of `next()`:
 
 ![saga1(#1).next(#1)](images/ex01-profiling-enabled-saga1-next12.png?raw=true)
 
 Let's again think about what happens during this time:
-- the Redux middleware receives the `Promise` and waits until the `Promise` resolves
-- the Recux middleware waits until the `Promise` resolves and resumess `saga1`
+- the Redux middleware receives the `Promise` and waits for it to resolve
+- the Recux middleware resumes `saga1`
 - `saga` creates a `call(slowFunction)` effect and returns it to the middleware
 
 This suggests that the call stack below `saga1(#1).next(#2)` is related to the middleware waiting for the `Promise` to resolve.
+
+I hope you are able 

@@ -13,11 +13,11 @@ Unfortunately, the above analogy does not apply at runtime: Sagas are chopped in
  
 ![timeline without profiling](images/introduction-profiling-disabled.png?raw=true)
 
-You see scattered call stacks, but it's not obvious how they relate to your application code. This is in stark contract to languages where Threads are *first class citizens*. The following screenshot shows threads being displayed as continuous bars when profiling a JVM with [VisualVM](https://visualvm.github.io):
+You see scattered call stacks, but there is no visibility into the execution of Sagas. This is in stark contract to languages where Threads are *first class citizens*. The following screenshot shows threads being displayed as continuous bars when profiling a JVM with [VisualVM](https://visualvm.github.io):
 
 ![VisualVM](images/visualvm.png?raw=true)
 
-At any given time, it's crystal clear which threads are running. The purpose of `profile` is to provide a similar profiling experience for Sagas: The profiling view should closely reflect the mental execution model that you have in mind:
+At any given time, it's crystal clear which threads are running. The purpose of `profile` is to provide a similar profiling experience: The profiling view should closely reflect the mental execution model that you have in your head:
 
 ![timeline without profiling](images/introduction-profiling-enabled.png?raw=true)
 

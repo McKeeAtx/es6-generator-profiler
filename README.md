@@ -115,5 +115,3 @@ Let's again think about what happens during this time:
 - `saga` creates a `call(slowFunction)` effect and returns it to the middleware
 
 This suggests that the call stack below `saga1(#1).next(#2)` is related to the middleware waiting for the `Promise` to resolve.
-
-I hope you are able 

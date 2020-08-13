@@ -116,4 +116,4 @@ Let's again think about what happens during this time:
 
 This suggests that the call stack below `saga1(#1).next(#2)` is related to the middleware waiting for the `Promise` to resolve.
 
-I hope this provides you with enough context to allow you to use `profile` for your profiling needs.
+I hope this provides enough context to allow you to use `profile` for your profiling needs :thumbsup:

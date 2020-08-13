@@ -71,7 +71,7 @@ The bar `saga1(#1)` indicates that `saga1` is running during this time. `#1` ind
 
 A generator function is considered *running* from the first time `next()` is invoked to the time `next()` returns for the first time with `done: true`. Due to limitations of the implementation of `profile`, the bar for a generator will only be visible if a pervious call of `next()` returned with `done: true`. Otherwise, the Timing section will only show invocations of `next(#n)`.
 
-The next image shows that the execution of `saga1(#1)` is broken down into smaller `saga1(#1).next(#b)` bars:
+The next image shows that the execution of `saga1(#1)` is broken down into smaller `saga1(#1).next(#n)` bars:
 
 ![saga1(#1).next(#1)](images/ex01-profiling-enabled-saga1-next1.png?raw=true)
 

@@ -112,7 +112,7 @@ This suggests that the call stack below `saga1(#1).next(#1)` is dominated by the
 Let's again think about what happens during this time:
 - the Redux middleware receives the `Promise` and waits for it to resolve
 - the Redux middleware resumes `saga1`
-- `saga` creates a `call(slowFunction)` effect and returns it to the middleware
+- `saga1` creates a `call(slowFunction)` effect and returns it to the middleware
 
 This suggests that the void below `saga1(#1).next(#2)` corresponds to the middleware waiting for the `Promise` to resolve.
 

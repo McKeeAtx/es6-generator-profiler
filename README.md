@@ -13,7 +13,7 @@ Unfortunately, the above analogy does not apply at runtime: Sagas are chopped in
  
 ![timeline without profiling](images/introduction-profiling-disabled.png?raw=true)
 
-You scattered call stacks, but it's not obvious how they relate to your application code. This is in stark contract to languages where Threads are *first class citizens*. The following screenshot shows threads being displayed as continuous bars when profiling a JVM with [VisualVM](https://visualvm.github.io):
+You see scattered call stacks, but it's not obvious how they relate to your application code. This is in stark contract to languages where Threads are *first class citizens*. The following screenshot shows threads being displayed as continuous bars when profiling a JVM with [VisualVM](https://visualvm.github.io):
 
 ![VisualVM](images/visualvm.png?raw=true)
 

@@ -4,7 +4,7 @@ Simple wrapper that uses the [User Timing API](https://developer.mozilla.org/en-
 
 ## What problem does it solve?
 
-I wrote `profile` to help analyze [React](https://reactjs.org) applications that use [Redux](https://redux.js.org) and [Redux Saga](https://redux-saga.js.org). However, `profile` is framework agnostic. It can be used to profile the execution of arbitrary generator functions.
+I wrote `profile` to analyze [React](https://reactjs.org) applications that use [Redux](https://redux.js.org) and [Redux Saga](https://redux-saga.js.org). However, `profile` is framework agnostic. It can be used to profile the execution of arbitrary generator functions.
 
 Let's get started by revisiting the [idea behind Sagas](https://redux-saga.js.org):
 > The mental model is that a saga is like a separate thread in your application that's solely responsible for side effects.

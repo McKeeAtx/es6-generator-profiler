@@ -44,7 +44,7 @@ The following screenshot shows the execution of the Saga in Chrome's performance
 
 ![Profiling disabled](images/ex01-profiling-disabled.png?raw=true)
 
-The call stacks in the Main section are mostly made up of *synthetic noise*. They provide little to no value if you want to understand which part of your application invoked `slowFunction`. You can infer from the synthetic stack frames that `slowFunction` is invoked from a Redux middleware, but that's about it. Sagas are invisible and it's not obvious that the three call stacks are siblings that share the same logical parent.
+The call stacks in the Main section are mostly made up of *synthetic noise*. They provide little to no value if you want to understand which part of your application invoked `slowFunction`. You can infer from the synthetic stack frames that `slowFunction` is invoked from a Redux middleware, but that's about it. Sagas are invisible and it's not obvious that the three calls are triggered by `saga1`.
 
 This is where `profile` comes into play:
 ```

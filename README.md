@@ -17,7 +17,7 @@ You see scattered call stacks, but there is no visibility into the execution of 
 
 ![VisualVM](images/visualvm.png?raw=true)
 
-At any given time, it's crystal clear which threads are running. The purpose of `profile` is to provide a similar profiling experience: The profiling view should closely reflect the mental execution model that you have in your head:
+It's crystal clear which threads are running at any point in time. The purpose of `profile` is to provide similar insights into the execution of Sagas: The profiling view should closely reflect the mental, Thread-based execution model:
 
 ![timeline without profiling](images/introduction-profiling-enabled.png?raw=true)
 

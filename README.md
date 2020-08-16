@@ -21,9 +21,7 @@ At any given time, it's crystal clear which threads are running. The purpose of 
 
 ![timeline without profiling](images/introduction-profiling-enabled.png?raw=true)
 
-## Alternatives
-
-Certain lifecycle events can be captured using a custom [Redux Middleware](https://redux.js.org/advanced/middleware) or [SagaMonitor](https://redux-saga.js.org/docs/api/#sagamonitor). However, I was not able to utilize those tools to mimick how threads are displayed in JVM based profiling tools. Those extension points are nevertheless valuable to generate further insights. See [clarkbw's gist](https://gist.github.com/clarkbw/966732806e7a38f5b49fd770c62a6099) for a great example how to use a custom Redux Middleware to surface Redux actions within the profiling timeline.
+In the above screenshot, Sagas appear as horizontal bars in the Timings section. This allows you to connect the dots between the call stacks and the Main section and the Sagas running within your application.
 
 ## Details
 
@@ -69,7 +67,7 @@ Let's break down what we see:
 
 The bar `saga1(#1)` indicates that `saga1` is running during this time. `#1` indicates that this is the second time `saga1` has been executed (indices are 0-based). There is no bar `saga1(#0)` because I started profiling just before the second execution of `saga1`.  
 
-A generator function is considered *running* from the first time `next()` is invoked to the time `next()` returns for the first time with `done: true`. Due to limitations of the implementation of `profile`, the bar for a generator will only be visible if a pervious call of `next()` returned with `done: true`. Otherwise, the Timing section will only show invocations of `next(#n)`.
+A generator function is considered *running* from the first time `next()` is invoked to the time `next()` returns for the first time with `done: true`.
 
 The next image shows that the execution of `saga1(#1)` is broken down into smaller `saga1(#1).next(#n)` bars:
 
@@ -117,3 +115,11 @@ Let's again think about what happens during this time:
 This suggests that the void below `saga1(#1).next(#2)` corresponds to the middleware waiting for the `Promise` to resolve.
 
 I hope this provides enough context to allow you to use `profile` for your profiling needs :thumbsup:
+
+## Limitations
+
+Due to limitations of the current implementation of `profile`, the bar for a generator will only be visible in the Timings section if a pervious call of `next()` returned with `done: true`. Otherwise, the Timing section will only show invocations of `next(#n)`.
+
+## Alternatives
+
+Certain lifecycle events can be captured using a custom [Redux Middleware](https://redux.js.org/advanced/middleware) or [SagaMonitor](https://redux-saga.js.org/docs/api/#sagamonitor). However, I was not able to utilize those tools to mimick how threads are displayed in JVM based profiling tools. Those extension points are nevertheless valuable to generate further insights. See [clarkbw's gist](https://gist.github.com/clarkbw/966732806e7a38f5b49fd770c62a6099) for a great example how to use a custom Redux Middleware to surface Redux actions within the profiling timeline.

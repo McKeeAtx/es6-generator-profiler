@@ -40,7 +40,7 @@ function* rootSaga() {
 }
 ```
 
-Let's analyze what happens at runtime using Chrome's Performance profiler:
+The following screenshot shows the execution of the Saga in Chrome's performance profiler:
 
 ![Profiling disabled](images/ex01-profiling-disabled.png?raw=true)
 

@@ -36,6 +36,21 @@ test('preserves behavior of output only generator', () => {
     expect(iterator.next()).toStrictEqual({"value":undefined,"done":true});
 });
 
+test('preserves behavior of output only generator 2', () => {
+
+    const generator = function*() {
+        yield 1;
+        yield 2;
+        return 3;
+    };
+
+    const iterator = profile(generator, noOpPerformance)();
+    expect(iterator.next()).toStrictEqual({"value":1,"done":false});
+    expect(iterator.next()).toStrictEqual({"value":2,"done":false});
+    expect(iterator.next()).toStrictEqual({"value":3,"done":true});
+    expect(iterator.next()).toStrictEqual({"value":undefined,"done":true});
+});
+
 test('preserves behavior when passing useless arguments to next', () => {
 
     const generator = function*() {

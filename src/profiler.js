@@ -36,7 +36,7 @@ export function profile(generator, performance) {
                         result = iterator.next();
                     }
                     if (result.done) {
-                        return;
+                        return result.value;
                     }
                 } finally {
                     const nextEndMark = `gen${generatorId}-next${nextId}-end`;

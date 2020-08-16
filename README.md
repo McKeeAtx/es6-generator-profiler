@@ -21,7 +21,7 @@ It's crystal clear which threads are running at any point in time. The purpose o
 
 ![timeline without profiling](images/introduction-profiling-enabled.png?raw=true)
 
-In the above screenshot, Sagas appear as horizontal bars in the Timings section. This allows you to connect the dots between the call stacks and the Main section and the Sagas running within your application.
+In the above screenshot, Sagas appear as horizontal bars in the Timings section. Now we can connect the dots between Sagas and call stacks and the Main section.
 
 ## Details
 

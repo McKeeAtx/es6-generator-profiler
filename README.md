@@ -59,7 +59,7 @@ Let's use the profiler again, this time with our Saga wrapped inside the `profil
 
 ![Profiling enabled](images/ex01-profiling-enabled.png?raw=true)
 
-This time, we get way more high-level information that helps to connect the dots between call stacks in the Main section and application code.
+Each running Saga is displayed as horizontal bar in the Timings section. This makes it easier to connect the dots between call stacks in the Main section and application code.
 
 Let's break down what we see:
 
